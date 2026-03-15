@@ -34,7 +34,7 @@ local function Root() local c=Char() return c and c:FindFirstChild("HumanoidRoot
 local function Hum() local c=Char() return c and c:FindFirstChild("Humanoid") end
 local function Try(f) pcall(f) end
 local function Tw(o,p,t) Try(function() TS:Create(o,TweenInfo.new(t or .2),p):Play() end) end
-local function Ntf(a,b) Try(function() SGui:SetCore("SendNotification",{Title=a,Text=b,Duration=3}) end) end
+local function Ntf(a,b) task.spawn(function() task.wait(0.1) Try(function() SGui:SetCore("SendNotification",{Title=a,Text=b,Duration=3}) end) end) end
 local function GetLv()
     local ls=plr:FindFirstChild("leaderstats")
     if ls then local v=ls:FindFirstChild("Level") or ls:FindFirstChild("Lv") if v then return v.Value end end
